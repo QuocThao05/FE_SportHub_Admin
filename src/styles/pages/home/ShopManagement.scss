@@ -1,0 +1,301 @@
+.shop-management {
+  padding: 24px;
+  font-family: "Inter", sans-serif;
+  background-color: #f4f5f7;
+  min-height: 50vh;
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 20px;
+  }
+
+  .sort-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    button {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.2s;
+      background-color: #3b82f6;
+      color: #fff;
+
+      &:hover {
+        background-color: #2563eb;
+      }
+
+      &:disabled {
+        background-color: #a5b4fc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+      th,
+      td {
+        padding: 14px 12px;
+        color: #111827;
+        font-size: 15px;
+      }
+
+      th {
+        background-color: #c3c3c3;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      tbody tr {
+        transition: background 0.2s;
+        &:hover {
+          background-color: #f0f3f7;
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+
+        button {
+          background: #e5e7eb;
+          border-radius: 6px;
+          padding: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            background: #3b82f6;
+            color: #fff;
+
+            svg {
+              stroke: #fff;
+            }
+          }
+
+          svg {
+            width: 18px;
+            height: 18px;
+            stroke: #111827;
+          }
+        }
+      }
+    }
+  }
+
+  /* Modal Edit Address */
+  .edit-address-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(17, 24, 39, 0.5);
+    z-index: 1000;
+
+    .modal-content {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px;
+      width: 700px;
+      max-width: 95%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+      h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #111827;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        align-items: center;
+
+        label {
+          display: flex;
+          flex-direction: column;
+          font-size: 14px;
+          color: #374151;
+
+          input {
+             margin-top: 6px;
+            min-height: 30px;
+            height: 35px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background: #fff;
+            font-size: 14px;
+            box-shadow: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+
+            &:focus {
+              border-color: #3b82f6;
+              box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+            }
+          }
+
+          /* React-select styles */
+          .react-select__control {
+            margin-top: 6px;
+            min-height: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background: #fff;
+            font-size: 14px;
+            box-shadow: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+          }
+
+          .react-select__control--is-focused {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+          }
+
+          .react-select__value-container {
+            padding: 0 8px;
+            font-size: 14px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+          }
+
+          .react-select__single-value {
+            color: #111827;
+          }
+
+          .react-select__menu {
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(16, 24, 40, 0.12);
+            z-index: 1100;
+          }
+
+          .react-select__menu-list {
+            max-height: 260px;
+            overflow: auto;
+          }
+
+          .react-select__option {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #111827;
+          }
+
+          .react-select__option--is-focused {
+            background: #eef2ff;
+            color: #1f2937;
+          }
+
+          .react-select__option--is-selected {
+            background: #3b82f6;
+            color: #fff;
+          }
+        }
+
+        .field-error {
+          margin-top: 6px;
+          color: #dc2626;
+          font-size: 12px;
+        }
+      }
+
+     .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+
+  button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 40px;
+
+    &.save-btn {
+      background-color: #3b82f6 !important;
+      color: #fff !important;
+      border: none !important;
+
+      &:hover {
+        background-color: #2563eb !important;
+      }
+    }
+
+    &.cancel-btn {
+      background-color: #fe0000 !important;
+      color: #fff !important;
+      border: none !important;
+
+      &:hover {
+        background-color: #cc0000 !important;
+      }
+    }
+  }
+}
+
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    .table-container table th,
+    .table-container table td {
+      padding: 10px 8px;
+      font-size: 14px;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sort-buttons {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  /* Ensure react-select portal menus render above modal/table */
+  .react-select__menu {
+    z-index: 99999 !important;
+  }
+
+  .react-select__menu-list {
+    z-index: 99999 !important;
+  }
+  .react-select__control {
+    z-index: 1;
+  }
+}

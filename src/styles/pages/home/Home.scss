@@ -1,0 +1,722 @@
+// ====================================
+// Admin Dashboard Styles
+// ====================================
+
+.admin-home {
+  padding: 2rem;
+  background: #0f172a;
+  min-height: 100vh;
+  color: #e2e8f0;
+
+  .dashboard-header {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin: 0;
+    }
+  }
+
+  // Stats Cards Grid
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #475569;
+        transform: translateY(-2px);
+      }
+
+      .stat-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        &.products {
+          background: rgba(59, 130, 246, 0.1);
+          color: #3b82f6;
+        }
+
+        &.users {
+        background: rgba(168, 85, 247, 0.1);
+          color: #a855f7;
+        }
+
+        &.orders {
+          background: rgba(34, 197, 94, 0.1);
+          color: #22c55e;
+        }
+      }
+
+      .stat-info {
+        flex: 1;
+
+        .stat-label {
+          font-size: 0.875rem;
+          color: #94a3b8;
+          margin: 0 0 0.25rem 0;
+        }
+
+        .stat-value {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #f1f5f9;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // Charts Grid - 3 columns
+  .charts-grid-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  .chart-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+
+    .chart-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      .time-filter {
+        display: flex;
+        gap: 0.5rem;
+
+        button {
+          padding: 0.375rem 0.75rem;
+          background: transparent;
+          border: 1px solid #334155;
+          border-radius: 0.375rem;
+          color: #94a3b8;
+          font-size: 0.875rem;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+          }
+
+          &.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  // Inventory Donut Chart
+  .inventory-chart {
+    .donut-chart {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+
+      svg {
+        max-width: 200px;
+      }
+    }
+
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: #cbd5e1;
+
+        .legend-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+
+          &.green {
+            background: #10b981;
+          }
+
+          &.yellow {
+            background: #f59e0b;
+          }
+
+          &.red {
+            background: #ef4444;
+          }
+        }
+      }
+    }
+  }
+
+  // Line Chart (User Growth)
+  .user-growth-chart {
+    .line-chart {
+      .chart-labels {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 0.75rem;
+        font-size: 0.75rem;
+        color: #64748b;
+      }
+    }
+  }
+
+  // Bar Chart (Orders)
+  .orders-chart {
+    .month-select {
+      padding: 0.5rem 1rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 0.375rem;
+      color: #cbd5e1;
+      font-size: 0.875rem;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border-color: #3b82f6;
+      }
+    }
+
+    .bar-chart {
+      .bars-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 240px;
+        gap: 1rem;
+        padding: 1rem 0;
+
+        .bar-group {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+
+          .bar {
+            width: 100%;
+            max-width: 60px;
+            background: linear-gradient(to top, #3b82f6, #60a5fa);
+            border-radius: 0.25rem 0.25rem 0 0;
+            min-height: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+
+              &.zero {
+                opacity: 0.3;
+              }
+
+              &:hover {
+                background: linear-gradient(to top, #2563eb, #3b82f6);
+              }
+
+            .bar-value {
+              position: absolute;
+              top: -20px;
+              font-size: 0.75rem;
+              color: #cbd5e1;
+              font-weight: 600;
+            }
+          }
+
+          .bar-label {
+            font-size: 0.75rem;
+            color: #64748b;
+          }
+        }
+      }
+    }
+  }
+
+  // Products Table
+  .products-table {
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      .view-all {
+        color: #3b82f6;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+
+        &:hover {
+          color: #60a5fa;
+        }
+      }
+    }
+
+    .products-list {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        tr {
+          border-bottom: 1px solid #334155;
+
+          th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid #1e293b;
+          transition: background 0.2s;
+
+          &:hover {
+            background: #0f172a;
+          }
+
+          td {
+            padding: 1rem;
+            font-size: 0.875rem;
+
+            &.stock-count {
+              color: #cbd5e1;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      .product-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .product-image {
+          font-size: 1.5rem;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #0f172a;
+          border-radius: 0.5rem;
+          overflow: hidden;
+
+          .product-image-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            display: block;
+          }
+        }
+
+        .product-name {
+          font-weight: 500;
+          color: #f1f5f9;
+        }
+
+        .product-code {
+          font-size: 0.75rem;
+          color: #64748b;
+          margin-top: 0.125rem;
+        }
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+
+        &.in-stock {
+          background: rgba(16, 185, 129, 0.1);
+          color: #10b981;
+        }
+
+        &.low-stock {
+          background: rgba(245, 158, 11, 0.1);
+          color: #f59e0b;
+        }
+
+        &.out-of-stock {
+          background: rgba(239, 68, 68, 0.1);
+          color: #ef4444;
+        }
+      }
+
+      .view-link {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          color: #60a5fa;
+        }
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .charts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bottom-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .products-table {
+      overflow-x: auto;
+    }
+  }
+}
+
+// ====================================
+// Original Gym Website Styles
+// ====================================
+
+$primary: #ff6b6b;
+$secondary: #111827;
+$muted: #6b7280;
+$bg: #f8fafc;
+
+.gym-website {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: $secondary;
+  background: $bg;
+}
+
+/* Hero */
+.hero-section {
+  position: relative;
+  min-height: 84vh;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+  color: #fff;
+  padding: 2.5rem 1rem 4rem;
+  background: radial-gradient(1400px 480px at 10% 12%, rgba(8,12,18,0.92), rgba(3,7,18,0.98));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+
+  /* background image + subtle dark overlay */
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background-image: url('/src/asset/gym.jpg');
+    background-size: cover;
+    background-position: center center;
+    filter: blur(1.5px) saturate(0.7) brightness(0.45);
+    opacity: .98;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.36) 55%);
+    z-index: 1;
+  }
+  /* layout wrapper inside hero: the JSX wraps left+right inside .hero-inner */
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 380px; /* left content + right schedule card */
+    gap: 2.6rem; /* a bit more breathing room between columns */
+    max-width: 1300px; /* center the inner hero to match container rhythm */
+    margin: 0 auto; /* center horizontally */
+    align-items: center;
+  }
+
+  /* Left glass panel (primary content) - applied to both .hero-content and .hero-glass (JSX uses .hero-glass)
+     keep both selectors so older class names still work */
+  .hero-content, .hero-glass {
+    position: relative;
+    z-index: 2;
+    padding: clamp(1rem, 2.5vw, 3.25rem) clamp(.9rem, 2.5vw, 2.5rem);
+    max-width: 1300px;
+    width: 100%;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(10,14,20,0.45), rgba(6,10,18,0.28));
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px) saturate(1.05);
+    box-shadow: 0 12px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  }
+
+  /* fluid hero title: scales between mobile and large desktop */
+  .hero-title {
+    font-size: clamp(1.25rem, 4vw, 3.2rem);
+    margin: 0 0 .5rem;
+    line-height: 1.02;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  }
+  .highlight { color: $primary; }
+  .hero-subtitle { color: rgba(255,255,255,0.85); margin-bottom: 1rem; max-width: 60ch; }
+
+  .hero-buttons { display:flex; gap: .75rem; margin-bottom: 1rem; }
+  .btn { padding: .75rem 1.1rem; border-radius: .6rem; cursor: pointer; font-weight: 600; }
+  .btn-primary { background: $primary; color: #0b1220; border: none; box-shadow: 0 8px 26px rgba(255,107,107,0.16); padding: .85rem 1.25rem; border-radius: 12px; }
+  .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.08); display: inline-flex; gap: .6rem; align-items:center; padding: .7rem 1rem; border-radius: 12px; }
+
+  /* feature pills under hero */
+  .hero-pills { display:flex; flex-wrap:wrap; gap:.6rem; margin-top: 1.25rem; }
+  .pill { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding: .45rem .9rem; border-radius: 999px; display:inline-flex; gap:.5rem; align-items:center; border: 1px solid rgba(255,255,255,0.04); color: rgba(255,255,255,0.9); font-weight:600; font-size:.94rem; }
+  .pill .icon { width:18px; height:18px; color: #9be3ff; }
+
+  .stats-overlay { position: relative; margin-top: 1.5rem; z-index: 2; }
+  .stats-grid { display: grid; grid-auto-flow: column; gap: 1rem; background: rgba(255,255,255,0.03); padding: .6rem .9rem; border-radius: .75rem; }
+
+  /* avatar row */
+  .avatar-row { display:flex; align-items:center; gap:.6rem; margin-top: 1.6rem; flex-wrap:wrap; }
+  .avatar-row img { width:56px; height:56px; border-radius: 10px; object-fit:cover; border: 2px solid rgba(255,255,255,0.06); box-shadow: 0 6px 20px rgba(2,6,23,0.45); }
+  .avatar-more { width:56px; height:56px; border-radius: 10px; background: rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; border: 2px solid rgba(255,255,255,0.04); }
+  .avatar-text { color: rgba(255,255,255,0.8); font-size: .95rem; margin-left: .5rem; min-width: 120px; }
+
+  /* Right schedule card - support both .hero-side (JSX) and .hero-side-panel */
+  .hero-side, .hero-side-panel {
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(180deg, rgba(6,12,20,0.7), rgba(8,14,22,0.45));
+    border-radius: 16px;
+    padding: .85rem;
+    color: #fff;
+    height: fit-content;
+    align-self: center;
+    box-shadow: 0 22px 48px rgba(2,6,23,0.65);
+    border: 1px solid rgba(255,255,255,0.045);
+  }
+  /* small stat pills placed above the card (overlap) */
+  .hero-side .side-top, .hero-side-panel .panel-top {
+    display:flex; gap:.8rem; justify-content:flex-end; margin-bottom: .6rem;
+    position: relative; top: -36px; right: -6px;
+  }
+  .hero-side .icon-box, .hero-side-panel .small-stat { background: rgba(255,255,255,0.02); padding: .55rem .9rem; border-radius: 12px; text-align:center; min-width: 0; flex:1; font-weight:700; }
+  .hero-side .icon-box span, .hero-side-panel .small-stat span { display:block; font-size:.78rem; color: rgba(255,255,255,0.82); margin-top:.25rem; }
+  /* panel body selectors combined below */
+  .hero-side .side-card h4, .hero-side-panel .panel-schedule h4 { margin:0 0 .6rem; font-size:1rem; }
+  .hero-side .side-card .steps, .hero-side-panel .panel-schedule .steps { display:flex; gap:.6rem; margin-bottom:.7rem; }
+  .hero-side .side-card .step { background: rgba(255,255,255,0.02); padding:.6rem .9rem; border-radius:10px; display:flex; align-items:center; gap:.6rem; color: rgba(255,255,255,0.95); }
+  .hero-side .side-card .badge { display:inline-flex; width:30px; height:30px; border-radius:999px; align-items:center; justify-content:center; background: #ff594d; color:#fff; font-weight:800; }
+  .hero-side .side-card ul, .hero-side-panel .panel-schedule ul { list-style:none; padding:0; margin:0 0 .75rem; max-height: 260px; overflow:auto; }
+  .hero-side .side-card li, .hero-side-panel .panel-schedule li { display:flex; gap:.6rem; align-items:center; padding:.6rem .6rem; border-radius:12px; background: rgba(255,255,255,0.015); margin-bottom:.45rem; }
+  .hero-side .time, .hero-side-panel .time { width:56px; height:40px; font-weight:700; border-radius:8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); color: #fff; }
+  .hero-side .event, .hero-side-panel .event { color: rgba(255,255,255,0.95); }
+  .hero-side .btn-outline, .hero-side-panel .btn-outline { width:100%; background: transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:.6rem .8rem; border-radius:10px; }
+  .btn-confirm { background: $primary; color: #0b1220; padding: .7rem .9rem; border-radius: 10px; border: none; font-weight:800; }
+
+  /* small icon boxes under card */
+  .hero-side .icon-box { min-width: auto; padding: .6rem .85rem; border-radius: 12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 8px 24px rgba(2,6,23,0.45); }
+
+}
+
+.container { max-width: 1300px; margin: 0 auto; padding: 2.25rem 1rem; }
+.section-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; }
+.section-title { font-size:1.375rem; margin:0; }
+.section-subtitle { color: $muted; margin-top: .25rem; }
+.view-all-btn { background: transparent; border: none; color: $primary; cursor: pointer; font-weight: 600; }
+
+.trainers-grid, .products-grid, .features-grid { display: grid; gap: 1rem; width:100%; }
+.trainers-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); align-items: stretch; }
+.products-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); align-items: stretch; }
+.features-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+.trainer-card, .product-card, .feature-card { background: linear-gradient(180deg,#0b1220,#07101a); border-radius: .75rem; box-shadow: 0 8px 30px rgba(2,6,23,0.6); overflow: hidden; color: #fff; display:flex; flex-direction:column; height:100%; }
+.trainer-image-container, .product-image-container { position: relative; }
+.trainer-image, .product-image { width: 100%; height: 200px; object-fit: cover; display: block; }
+.trainer-info { position: absolute; left: 1rem; bottom: 1rem; color: #fff; }
+.trainer-details, .product-details { padding: 0.75rem; display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:auto; }
+.trainer-book-btn, .product-add-btn { background: $primary; color: #0b1220; border: none; padding: .5rem .75rem; border-radius: .5rem; cursor: pointer; font-weight:700; }
+.product-discount { position: absolute; top: .5rem; right: .5rem; background: $primary; color: #fff; padding: .25rem .5rem; border-radius: .375rem; font-weight:700; }
+
+.product-original-price { margin-left: .5rem; color: rgba(255,255,255,0.55); text-decoration: line-through; font-size: .95rem; }
+
+/* Ensure product/trainer cards expand to same height in a row */
+.trainers-grid > .trainer-card, .products-grid > .product-card { display:flex; flex-direction:column; }
+
+/* Make images responsive height for narrow cards */
+@media (max-width: 600px) {
+  .trainer-image, .product-image { height: 160px; }
+}
+
+/* Small tweaks for very small phones */
+@media (max-width: 420px) {
+  .trainer-image, .product-image { height: 140px; }
+  .hero-title { font-size: clamp(1.1rem, 6vw, 2rem); }
+}
+
+.feature-card { padding: 1rem; text-align: center; }
+.feature-icon { width: 46px; height:46px; color: $primary; margin-bottom: .5rem; }
+
+.cta-section { background: linear-gradient(90deg, rgba(255,107,107,0.12), rgba(255,235,238,0.08)); padding: 2rem; border-radius: .75rem; }
+.cta-title { font-size: 1.5rem; margin: 0 0 .5rem; }
+.cta-buttons { display:flex; gap:.75rem; }
+.btn-white { background: #fff; color: $primary; border: none; padding: .5rem .75rem; border-radius: .5rem; }
+.btn-outline { background: transparent; border: 1px solid rgba(17,24,39,0.08); color: $secondary; }
+
+@media (max-width: 768px) {
+  .stats-overlay { display: none; }
+  .trainers-grid, .products-grid, .features-grid { grid-template-columns: 1fr; }
+  .hero-content { padding: 1.25rem 1rem; }
+  /* Collapse outer hero columns and inner grid on small screens */
+  .hero-section { grid-template-columns: 1fr; padding-bottom: 2rem; }
+  .hero-inner { grid-template-columns: 1fr; }
+  /* On tablet/smaller desktop we stack the aside below the hero (do not hide here) */
+  .hero-side, .hero-side-panel { display: block; max-width: 720px; margin-top: 1rem; }
+  .panel-schedule { margin: 0 auto; }
+  /* Stack hero buttons for better mobile UX */
+  .hero-buttons { flex-direction: column; gap: .6rem; }
+  .hero-buttons .btn { width: 100%; }
+  .hero-pills .pill { font-size: .86rem; padding: .4rem .7rem; }
+  .avatar-row img { width:44px; height:44px; }
+  .avatar-more { width:44px; height:44px; }
+}
+
+/* Tablet: stack the right panel below the hero and make panel cards vertical */
+@media (max-width: 1024px) {
+  .hero-section { grid-template-columns: 1fr; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .panel-schedule, .hero-side { display: block; max-width: 760px; margin: 1rem auto 0; }
+  .panel-row { flex-direction: column; gap: .5rem; }
+  .panel-card { flex-direction: row; align-items: center; }
+  .steps { flex-wrap: wrap; }
+  .panel-times { justify-content: flex-start; }
+  .panel-title { font-size: 1rem; }
+}
+
+/* Mobile small: hide the aside entirely to keep the hero compact */
+@media (max-width: 480px) {
+  .hero-side, .hero-side-panel, .panel-schedule { display: none; }
+}
+
+/* Schedule panel styles (right column) */
+.panel-schedule {
+  background: linear-gradient(180deg, rgba(6,12,20,0.84), rgba(10,16,22,0.6));
+  border-radius: 14px;
+  padding: 1rem;
+  color: #e6f0f2;
+  box-shadow: 0 18px 40px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.04);
+  max-width: 360px;
+}
+.panel-title { font-weight:700; margin: 0 0 .6rem; font-size: 1.05rem; }
+.side-top { display:flex; gap:.8rem; margin-bottom:.6rem; }
+.icon-box { background: rgba(255,255,255,0.03); padding: .55rem .9rem; border-radius: 10px; font-weight:700; }
+
+.steps { display:flex; gap:.6rem; margin-bottom:.75rem; }
+.step { background: rgba(255,255,255,0.02); padding: .5rem .8rem; border-radius: 10px; display:flex; align-items:center; gap:.5rem; }
+.badge { display:inline-flex; width:26px; height:26px; border-radius:999px; align-items:center; justify-content:center; background: #ff5950; color:#fff; font-weight:800; }
+
+.panel-body { display:flex; flex-direction:column; gap:.6rem; margin-bottom:.6rem; }
+.panel-row { display:flex; gap:.6rem; }
+.panel-card { flex:1; background: rgba(255,255,255,0.02); border-radius:10px; padding:.65rem; display:flex; gap:.6rem; align-items:center; }
+.panel-icon { width:20px; height:20px; color: #9fe0ff; }
+.panel-text { color: rgba(230,240,242,0.9); font-size:.92rem; }
+
+.panel-times { display:flex; gap:.5rem; margin-top:.25rem; flex-wrap:wrap; }
+.time { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); color:#fff; padding:.45rem .6rem; border-radius:8px; font-weight:700; }
+
+.panel-footer { display:flex; justify-content:space-between; align-items:center; gap:.6rem; margin-top:.6rem; }
+.panel-note { color: rgba(255,255,255,0.6); font-size:.85rem; }
+.panel-actions { display:flex; gap:.5rem; }
+.btn-confirm { background: #ff3b33; color: #fff; padding: .6rem .9rem; border-radius: 10px; border: none; font-weight:800; }
+
+/* Desktop: make the hero columns equal width and let content fill each column */
+@media (min-width: 900px) {
+  /* make hero area a centered grid so inner content sits centered inside the background */
+  .hero-section {
+    display: grid;
+    place-items: center; /* centers both horizontally and vertically */
+    grid-template-columns: 1fr; /* single centered column */
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr; /* single column - hero content centered */
+    max-width: 1300px;
+    width: 100%;
+  }
+
+  /* vertically center the hero content on large screens */
+  .hero-section { align-items: center; }
+
+  /* center schedule panel below the hero (single column layout) */
+  .panel-schedule { display: block; max-width: 420px; margin: 1rem auto 0; width: 100%; }
+  .hero-side { display:block; }
+  /* let the hero glass/content expand to use available column space */
+  .hero-content, .hero-glass { max-width: none; }
+}
+

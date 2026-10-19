@@ -1,0 +1,116 @@
+.admin-sidebar {
+  width: 240px;
+  background: #0f172a;
+  border-right: 1px solid rgba(56, 189, 248, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  transition: width 0.3s ease;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    // Giảm gap để không cộng dồn với margin-bottom bên dưới
+    gap: 0; 
+    padding: 0 1rem;
+
+    // --- Định kiểu cho mục Menu Đơn và Mục Cha (Parent Menu) ---
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #94a3b8;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      cursor: pointer; // Thêm cursor cho mục cha
+
+      // Vạch kẻ và khoảng cách
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 5px; 
+      
+      // Xóa border-bottom cho NavLink cuối cùng trong nav
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+      }
+
+      &.active {
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+      }
+    }
+    
+    // --- Định kiểu cho Menu Đa Cấp (Dropdown) ---
+    .menu-item-dropdown {
+      .menu-item.parent {
+        // Mục cha có dropdown
+        // Đảm bảo không bị active khi ở trạng thái đóng (chỉ active khi có submenu active)
+        &.active {
+            // Sử dụng màu active của bạn
+            background: rgba(56, 189, 248, 0.15); 
+            color: #38bdf8;
+        }
+
+        .chevron {
+          margin-left: auto; // Đẩy icon mũi tên sang phải
+        }
+      }
+
+      .submenu {
+        display: flex;
+        flex-direction: column;
+        // background-color: #1a243a; // Tạo màu nền hơi khác cho submenu
+        padding-left: 20px; // Lùi vào trong
+        padding-top: 5px; 
+        padding-bottom: 5px; 
+        
+        // Loại bỏ border-bottom cho mục cha ngay trên submenu
+        .menu-item.parent {
+          border-bottom: none;
+          margin-bottom: 0;
+        }
+
+
+        .submenu-item {
+          display: flex;
+          align-items: center;
+          color: #94a3b8;
+          padding: 8px 14px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 400; // Font nhẹ hơn mục cha
+          transition: all 0.2s ease;
+          
+          &:hover {
+            background: rgba(56, 189, 248, 0.05); // Hover nhẹ hơn
+            color: #38bdf8;
+          }
+
+          &.active {
+            // Màu active của submenu item
+            background: rgba(56, 189, 248, 0.1); 
+            color: #38bdf8;
+            font-weight: 500;
+          }
+        }
+      }
+      
+      // Thêm lại vạch kẻ dưới toàn bộ dropdown container
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 5px;
+      
+      &:last-of-type {
+          border-bottom: none;
+          margin-bottom: 0;
+      }
+    }
+  }
+}

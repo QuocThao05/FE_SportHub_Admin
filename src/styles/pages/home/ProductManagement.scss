@@ -1,0 +1,620 @@
+// ProductManagement.scss
+
+// Variables
+$primary-color: #667eea;
+$primary-dark: #764ba2;
+$text-primary: #111827;
+$text-secondary: #374151;
+$text-muted: #6b7280;
+$text-light: #9ca3af;
+$border-color: #e5e7eb;
+$bg-light: #f9fafb;
+$bg-gray: #f3f4f6;
+$success-bg: #d1fae5;
+$success-text: #065f46;
+$success-color: #10b981;
+$danger-bg: #fee2e2;
+$danger-text: #991b1b;
+$danger-color: #fed7d7;
+$warning-bg: #fef3c7;
+$warning-text: #92400e;
+$info-bg: #dbeafe;
+$info-text: #1e40af;
+$active-bg: #ecfdf5;
+$active-border: #10b981;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 20px;
+$transition: all 0.3s ease;
+$transition-fast: all 0.2s ease;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@mixin hover-scale {
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Main Container
+.product-management {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: $border-radius-xl;
+    @include card-shadow;
+    overflow: hidden;
+  }
+
+  &__header {
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    padding: 2rem;
+    color: white;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__icon {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  &__subtitle {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+  }
+
+  &__actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    .add-product-btn {
+      padding: 0.75rem 1.5rem;
+      background: $success-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover {
+        background: darken($success-color, 5%);
+        transform: translateY(-2px);
+      }
+    }
+
+  } 
+
+  &__filters {
+    padding: 1.5rem;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+// Search Box
+.search-box {
+  flex: 1 1 300px;
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-light;
+  }
+
+  &__input {
+    width:95%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 2px solid $border-color;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: $transition;
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+}
+
+// Brand Filter
+.brand-filter {
+  padding: 0.75rem 1rem;
+  border: 2px solid $border-color;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  background: white;
+  transition: $transition;
+
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+// Table Wrapper
+.table-wrapper {
+  overflow-x: auto;
+}
+
+// Product Table
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background: $bg-light;
+    border-bottom: 2px solid $border-color;
+  }
+
+  &__th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: $text-secondary;
+
+    &--toggle {
+      width: 50px;
+    }
+
+    &--sortable {
+      cursor: pointer;
+      user-select: none;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__row {
+    border-bottom: 1px solid $border-color;
+    transition: $transition-fast;
+
+    &--expanded {
+      background: $bg-light;
+    }
+
+    &:hover:not(.expanded-row) {
+      background: $bg-light;
+    }
+  }
+
+  &__td {
+    padding: 1rem;
+    color: $text-secondary;
+
+    &--center {
+      text-align: center;
+    }
+
+    &--price {
+      font-weight: 600;
+    }
+  }
+}
+
+// Toggle Button
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: $primary-color;
+  @include flex-center;
+  transition: $transition-fast;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Product Info
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    border: 2px solid $border-color;
+  }
+
+  &__details {
+    flex: 1;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 0.25rem;
+  }
+
+  &__description {
+    font-size: 0.85rem;
+    color: $text-muted;
+  }
+}
+
+// Stock Badge
+.stock-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+
+  &--high {
+    background: $success-bg;
+    color: $success-text;
+  }
+
+  &--low {
+    background: $danger-color;
+    color: $danger-text;
+  }
+}
+
+// Sold Info
+.sold-info {
+  @include flex-center;
+  gap: 0.25rem;
+
+  &__icon {
+    color: $success-color;
+  }
+
+  &__value {
+    font-weight: 600;
+    color: $text-secondary;
+  }
+}
+
+// Action Buttons
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.action-btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &--view {
+    background: $info-bg;
+    color: $info-text;
+
+    &:hover {
+      background: darken($info-bg, 5%);
+    }
+  }
+
+  &--edit {
+    background: $warning-bg;
+    color: $warning-text;
+
+    &:hover {
+      background: darken($warning-bg, 5%);
+    }
+  }
+
+  &--delete {
+    background: $danger-bg;
+    color: $danger-text;
+
+    &:hover {
+      background: darken($danger-bg, 5%);
+    }
+  }
+}
+
+// Expanded Row
+.expanded-row {
+  background: $bg-light;
+
+  &__content {
+    padding: 1.5rem;
+  }
+}
+
+// Size List & Card
+.size-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.size-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: $border-radius-lg;
+  border: 2px solid $border-color;
+
+  &__content {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: $border-radius-lg;
+    border: 2px solid $border-color;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  &__title {
+    margin: 0 0 1rem 0;
+    color: $text-primary;
+    font-size: 1.1rem;
+  }
+
+  &__prices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// Price Item
+.price-item {
+  &__label {
+    font-size: 0.85rem;
+    color: $text-muted;
+    margin-bottom: 0.25rem;
+  }
+
+  &__value {
+    font-weight: 600;
+
+    &--original {
+      color: $text-light;
+      text-decoration: line-through;
+    }
+
+    &--discount {
+      color: $primary-color;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Flavors Section
+.flavors-section {
+  &__title {
+    margin: 0 0 0.75rem 0;
+    color: $text-secondary;
+    font-size: 0.95rem;
+  }
+}
+
+.flavor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.flavor-card {
+  border-radius: $border-radius;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+
+  &--active {
+    background: $active-bg;
+    border: 2px solid $active-border;
+  }
+
+  &--inactive {
+    background: $bg-gray;
+    border: 2px solid darken($border-color, 5%);
+  }
+
+  &__name {
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 0.25rem;
+  }
+
+  &__stats {
+    color: $text-muted;
+    font-size: 0.8rem;
+  }
+}
+
+// Sub Images
+.sub-images {
+  &__title {
+    margin: 0 0 0.75rem 0;
+    color: $text-secondary;
+    font-size: 0.95rem;
+  }
+
+  &__gallery {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    border: 2px solid $border-color;
+    cursor: pointer;
+    @include hover-scale;
+  }
+}
+
+// Pagination
+.pagination {
+  padding: 1.5rem;
+  @include flex-between;
+  border-top: 1px solid $border-color;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &__info {
+    color: $text-muted;
+    font-size: 0.9rem;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid $border-color;
+    border-radius: $border-radius;
+    background: white;
+    cursor: pointer;
+    color: $text-secondary;
+    font-weight: 600;
+    transition: $transition-fast;
+
+    &:hover:not(&--disabled) {
+      border-color: $primary-color;
+      color: $primary-color;
+      transform: translateY(-2px);
+    }
+
+    &--page {
+      min-width: 40px;
+    }
+
+    &--active {
+      background: $primary-color;
+      border-color: $primary-color;
+      color: white;
+
+      &:hover {
+        transform: none;
+      }
+    }
+
+    &--disabled {
+      background: $bg-gray;
+      cursor: not-allowed;
+      color: $text-light;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .product-management {
+    padding: 1rem;
+  }
+
+  .product-table {
+    font-size: 0.9rem;
+
+    &__th,
+    &__td {
+      padding: 0.75rem;
+    }
+  }
+
+  .size-card__content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-management__header {
+    padding: 1.5rem;
+  }
+
+  .product-management__title {
+    font-size: 1.5rem;
+  }
+
+  .product-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__controls {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

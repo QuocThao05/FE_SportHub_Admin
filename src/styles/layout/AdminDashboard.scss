@@ -1,0 +1,20 @@
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #0f172a;
+  color: #e2e8f0;
+
+  .admin-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .admin-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    background: #1e293b;
+  }
+}
